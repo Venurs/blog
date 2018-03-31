@@ -1,0 +1,14 @@
+{% extends "common/base.html" %}
+{% block title %}
+头像修改
+{% endblock %}
+{% block tcontent %}
+    <div class="container">
+        {{ super() }}
+        {% if img_url %}
+            <img src="{{ img_url }}" alt="">
+        {% endif %}
+        {{ quick_form(form) }}
+    </div>
+
+{% endblock %}

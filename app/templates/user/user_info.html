@@ -1,0 +1,35 @@
+{% extends "common/base.html" %}
+{% block title %}
+    信息
+{% endblock %}
+{% block tcontent %}
+    {{ super() }}
+    <div class="container">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">头像</label>
+                <div class="col-sm-10" >
+                    <img style="height: 130px;width: 130px;display:block;margin-left: auto;margin-right: auto"
+                         src="{{ url_for("static", filename="uploads/" + current_user.photo_name) }}" alt="头像"
+                         class="img-circle">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email"
+                           value="{{ current_user.username }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email"
+                           value="{{ current_user.email }}">
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

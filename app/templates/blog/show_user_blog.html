@@ -1,0 +1,30 @@
+{% extends 'common/base.html' %}
+{% block tcontent %}
+<div class="container">
+{% if blogs %}
+<table class="table table-hover">
+    <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>摘要</th>
+        <th>发表时间</th>
+        <th>操作</th>
+    </tr>
+    {% for bl in blogs %}
+    <tr>
+        <td>{{ bl.id }}</td>
+        <td>{{ bl.title }}</td>
+        <td>{{ bl.abstract }}</td>
+        <td>{{ moment(bl.make_time).format("LLL") }}</td>
+        <td>a
+            <button class="btn btn-success">查看</button>
+            <button class="btn btn-danger">编辑</button>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+{% endif %}
+</div>
+{% endblock %}

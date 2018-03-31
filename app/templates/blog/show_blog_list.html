@@ -1,0 +1,36 @@
+{% extends "common/base.html" %}
+{% block tcontent %}
+    <div class="container">
+        <ul class="list-group">
+            {% for bl in blogs %}
+                <li class="list-group-item">
+                    {#                        <div class="media" onclick="parent.location.href={{ url_for("main.index")}}">#}
+                    <div class="media" onclick=parent.location.href="{{ url_for("blog.show_blog", id=bl.id) }}">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-circle" style="width: 100px;height: 100px"
+                                     src="{{ url_for("static", filename="uploads/"+bl.user.photo_name) }}"
+                                     alt="用户头像">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            标题：<h3 class="media-heading" style="display: inline-block">{{ bl.title }}</h3>
+                            分类：<h4 style="display: inline-block">{{ bl.classify.name }}</h4>
+                            <div style="float: right">
+                                {{ moment(bl.make_time).fromNow() }}
+                            </div>
+                            <h5>博客摘要</h5>
+                            <div style="float: right">
+                                <h5>阅读量：</h5>{{ bl.read_count }}
+                            </div>
+
+
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}

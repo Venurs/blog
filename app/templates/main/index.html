@@ -1,0 +1,31 @@
+{% extends 'common/base.html' %}
+{% from "common/macro.html" import show_page %}
+{% block tcontent %}
+
+    {{ super() }}
+    <div class="container">
+        {{ quick_form(form) }}
+        <ul class="list-group" style="margin-top: 30px">
+            {% for datum in data %}
+                <li class="list-group-item">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img style="width: 80px;height: 80px " class="media-object img-circle"
+                                     src="{{ url_for("static", filename="uploads/"+datum.user.photo_name) }}" alt="头像">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <div style="float: right">
+                                {{ moment(datum.timestamp).fromNow() }}
+                            </div>
+                            <h3 class="media-heading">{{ datum.user.username }}</h3>
+                            {{ datum.content }}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+            {{ show_page(pagination, viewFunc) }}
+    </div>
+{% endblock %}
